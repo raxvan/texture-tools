@@ -38,7 +38,7 @@ class FontConverter():
 
 			box = (x, y, x + w, y + h)
 			output_img = self.image.crop(box)
-			outfile = self.name + "-ch" + str(ind) +".png"
+			outfile = self.name + "-ch" + str(ind) +".tga"
 			output_img.save(os.path.join(outdir, outfile))
 
 			fout.write("  - index: " + str(ind) + "\n")
@@ -57,60 +57,3 @@ f = FontConverter(idir, ifile)
 if not os.path.exists(odir):
 	os.makedirs(odir)
 f.save(odir)
-
-"""
-
-def save_data(data, image, file):
-	f = open(os.path.join('../data/fonts', file), "w")
-
-	characters = data['characters']
-
-	chlist = []
-	for k, v in characters.items():
-		l = ""
-		l = l + str(ord(k)) + ","
-		l = l + str(v['x']) + ","
-		l = l + str(v['y']) + ","
-		l = l + str(v['width']) + ","
-		l = l + str(v['height']) + ","
-		l = l + str(v['originX']) + ","
-		l = l + str(v['originY']) + ","
-		l = l + str(v['advance']) + "\n"
-		chlist.append(l)
-
-	f.write(str(len(chlist)) + "\n")
-	f.write(str(data['size']) + "\n")
-	f.write(str(data['width']) + "\n")
-	f.write(str(data['height']) + "\n")
-	for l in chlist:
-		f.write(l)
-
-	y = 0
-	w = data['width']
-	h = data['height']
-
-	while y < h:
-		x = 0
-		while x < w:
-			vf = format(image.getpixel((x,y))[0], 'x')
-			if len(vf) == 1:
-				vf = "0" + vf
-			elif len(vf) == 0:
-				vf = "00"
-			f.write(vf)
-			x = x + 1
-
-		y = y + 1
-
-	f.close()
-
-def process_font(font_name):
-	metadata = read_metadata(font_name + ".json");
-	image = process_image(font_name + ".png");
-
-	save_data(metadata, image, font_name + ".bf")
-
-process_font("arial_18")
-process_font("arial_16")
-"""
-
