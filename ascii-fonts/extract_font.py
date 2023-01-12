@@ -41,7 +41,7 @@ class FontConverter():
 			outfile = self.name + "-ch" + str(ind) +".tga"
 			output_img.save(os.path.join(outdir, outfile))
 
-			fout.write("  - index: " + str(ind) + "\n")
+			fout.write(f"  - index: {ind}\n")
 			fout.write(f"    texture: \"{outfile}\"\n")
 			fout.write(f"    origin: {{ x : {ox}, y : {oy} }}\n")
 			fout.write(f"    size: {{ x : {w}, y : {h} }}\n")
