@@ -25,7 +25,7 @@ class FontConverter():
 		characters = self.metadata['characters']
 
 		fout = open(os.path.join(outdir, self.name + ".yaml"), "w")
-		fout.write("characters:\n")
+		fout.write("aschiiCharacters:\n")
 		for k, v in characters.items():
 			ind = ord(k)
 			x = v['x']
